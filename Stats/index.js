@@ -28,6 +28,6 @@ module.exports = async function (context, req) {
     return httpResponse(200, res)
   } catch (error) {
     logger('error', ['Error uploading statistics object to MongoDB', 'system', stat.system, 'error', error.toString()], context)
-    httpResponse(500, error)
+    return httpResponse(500, error)
   }
 }
