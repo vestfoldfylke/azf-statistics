@@ -2,7 +2,7 @@
 Azure function for handling stats
 
 # Usage
-## POST /Stat
+## POST /Stats
 Creates a statistics document in {system}-collection in statistics database
 
 See the example below for required fields. You can add as many optional fields as you like in addition to the required fields.
