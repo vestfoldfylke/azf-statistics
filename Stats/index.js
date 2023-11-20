@@ -12,7 +12,6 @@ module.exports = async function (context, req) {
   let stat
   try {
     logger('info', ['Creating statistics object'], context)
-
     stat = createStatistic(body)
     logger('info', ['Created statistics object', 'system', stat.system], context)
   } catch (error) {
@@ -20,7 +19,7 @@ module.exports = async function (context, req) {
     return httpResponse(400, error)
   }
   try {
-    const db = statDb()
+    const db = await statDb()
     const collection = db.collection(stat.system)
     logger('info', ['Uploading statistics object to MongoDB', 'system', stat.system], context)
     const res = await collection.insertOne(stat)
