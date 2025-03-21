@@ -230,7 +230,10 @@ npm i
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
     "MONGO_STATISTICS_CONNECTION_STRING": "connectionstring",
     "MONGO_DB_STATISTICS_DATABASE": "statistics db name",
-    "DEFAULT_COUNTY": "county name"
+    "DEFAULT_COUNTY": "county name",
+    "BETTERSTACK_URL": "URL to betterstack",
+    "BETTERSTACK_TOKEN": "token for betterstack",
+    "NODE_ENV": "development"
   }
 }
 ```
