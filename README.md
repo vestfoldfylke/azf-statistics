@@ -213,7 +213,7 @@ Returns
 ]
 ```
 
-## GET `/Grafana?start=\${__from}&end=\${__to}` or `/Grafana/{system}?start=\${__from}&end=\${__to}` 
+## GET `/Grafana?start=\${__from}&end=\${__to}` or `/Grafana/all?start=\${__from}&end=\${__to}` or `/Grafana/{system}?start=\${__from}&end=\${__to}` 
 
 `__from` and `__to` is generated ISO DateTime UTC stamps from Grafana
 
@@ -236,21 +236,40 @@ Example request `GET https://{statusurl}/api/Grafana?start=2025-03-21T10:20:00Z&
 ]
 ```
 
-### GET `/Grafana/{system}?start=${__from}&end=${__to}`
+### GET `/Grafana/all?start=${__from}&end=${__to}`
 
-Returns Grafana stats for {system} in given timeframe
+Returns Grafana stats for all systems in given timeframe
 
-Example request `GET https://{statusurl}/api/Grafana?start=2025-03-21T10:20:00Z&end=2025-03-21T10:25:00Z`
+Request `GET https://{statusurl}/api/Grafana/all?start=2025-03-21T10:20:00Z&end=2025-03-21T10:25:00Z`
 
 ```json
 [
   {
-    "system": "MinElev",
-    "count": 42
+    "timestamp": "2024-08-26T09:31:00.000Z",
+    "MinElev": 418
   },
   {
-    "system": "Acos skjema",
-    "count": 13
+    "timestamp": "2024-08-26T09:31:00.000Z",
+    "VikarApp": 404
+  }
+]
+```
+
+### GET `/Grafana/{system}?start=${__from}&end=${__to}`
+
+Returns Grafana stats for {system} in given timeframe
+
+Example request `GET https://{statusurl}/api/Grafana/MinElev?start=2025-03-21T10:20:00Z&end=2025-03-21T10:25:00Z`
+
+```json
+[
+  {
+    "timestamp": "2024-08-26T09:31:00.000Z",
+    "varsel-fag": 1
+  },
+  {
+    "timestamp": "2024-08-26T09:31:00.000Z",
+    "notat-notat": 1
   }
 ]
 ```
