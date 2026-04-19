@@ -1,6 +1,6 @@
-const { logger } = require('@vestfoldfylke/loglady')
-const MongoClient = require('mongodb').MongoClient
-const { mongoDB } = require('../config')
+const { logger } = require("@vestfoldfylke/loglady")
+const MongoClient = require("mongodb").MongoClient
+const { mongoDB } = require("../config")
 
 let client = null
 
@@ -10,11 +10,12 @@ let client = null
  */
 module.exports = async () => {
   if (client !== null) {
-    logger.info('mongo - client already exists. Quick return')
+    logger.info("mongo - client already exists. Quick return")
     return client.db(mongoDB.statisticsDatabase)
   }
 
-  logger.info('mongo - new client init')
+  logger.info("mongo - new client init")
+
   try {
     client = new MongoClient(mongoDB.statisticsConnectionString)
     await client.connect()

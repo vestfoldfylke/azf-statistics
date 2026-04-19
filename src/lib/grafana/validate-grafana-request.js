@@ -1,23 +1,23 @@
-const { logger } = require('@vestfoldfylke/loglady')
+const { logger } = require("@vestfoldfylke/loglady")
 
 const getDate = (value) => {
-  if (value.includes('T')) {
+  if (value.includes("T")) {
     return new Date(value)
   }
 
-  return new Date(Number.parseInt(value))
+  return new Date(Number.parseInt(value, 10))
 }
 
-module.exports = ({ start, end } = {}, context) => {
+module.exports = ({ start, end } = {}) => {
   logger.logConfig({
-    prefix: 'azf-statistics - Grafana - Validate'
+    prefix: "azf-statistics - Grafana - Validate"
   })
 
   if (!start) {
     logger.error('Missing "start" query parameter')
     return {
       result: false,
-      message: 'Please provide a start query parameter'
+      message: "Please provide a start query parameter"
     }
   }
 
@@ -25,25 +25,25 @@ module.exports = ({ start, end } = {}, context) => {
     logger.error('Missing "end" query parameter')
     return {
       result: false,
-      message: 'Please provide an end query parameter'
+      message: "Please provide an end query parameter"
     }
   }
 
   const startDate = getDate(start)
-  if (startDate.toString() === 'Invalid Date') {
+  if (startDate.toString() === "Invalid Date") {
     logger.error('Invalid "start" query parameter')
     return {
       result: false,
-      message: 'Invalid start query parameter'
+      message: "Invalid start query parameter"
     }
   }
 
   const endDate = getDate(end)
-  if (endDate.toString() === 'Invalid Date') {
+  if (endDate.toString() === "Invalid Date") {
     logger.error('Invalid "end" query parameter')
     return {
       result: false,
-      message: 'Invalid end query parameter'
+      message: "Invalid end query parameter"
     }
   }
 
@@ -51,7 +51,7 @@ module.exports = ({ start, end } = {}, context) => {
     logger.error('"start" query parameter is after "end" query parameter')
     return {
       result: false,
-      message: 'start query parameter is after end query parameter'
+      message: "start query parameter is after end query parameter"
     }
   }
 
